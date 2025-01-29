@@ -1,0 +1,150 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet"> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=Raleway:wght@100&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: rgb(193, 210, 248);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            height: 95vh;
+        }
+
+        .login {
+            box-shadow: -2px 5px 30px 0.5px rgb(168, 168, 168);
+            border-radius: 5%;
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        .imgs {
+            height: 65vh;
+            width: 45vw;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(240, 153, 41);
+        }
+
+        .login-form {
+            height: 65vh;
+            width: 45vw;
+            background-color: white;
+            align-self: flex-end;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Lobster Two', cursive;
+            font-family: 'Raleway', sans-serif;
+            font-family: 'Ubuntu', sans-serif;
+            color: black;
+        }
+
+        table {
+            padding-top: 0vh;
+        }
+
+        tr {
+            line-height: 3vh;
+        }
+
+        input[type=text],
+        input[type=password] {
+            border: none;
+            border-bottom: 0.5px solid black;
+            width: 250px;
+            height: 1.2rem;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fffefe;
+            transition: all 0.3s ease;
+
+        }
+
+        input[type="text"]:focus ,input[type=password]:focus{
+            border-color: #4495ec;
+            outline: none;
+        }
+
+        input[type=submit] {
+            margin-top: 5vh;
+            padding: 1vh 2vh;
+            background-color: rgb(52, 152, 219);
+            border: none;
+            color: white;
+            border-radius: 0.5vh;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: small;
+        }
+
+        img {
+            width: 80%;
+            height: 50%;
+        }
+
+        .err_message {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login">
+        <div class="imgs"><img src="{% static 'assets/Teamim.jpg' %}"></div>
+        <div class="login-form">
+            <h3 style="font-size: 1.5rem;font-weight: 600; letter-spacing: 5px;">LOGIN</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Id</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="id" required></td><br>
+                    </tr>
+                    <tr class="pass">
+                        <td><br>Password</td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" name="password" required></td><br>
+                    </tr>
+                </table>
+                <input type="submit" value="Login"><br><br>
+                <a href="signup" style="font-size: 0.8rem;font-weight: 400; letter-spacing: 1px;">New Employee? Click here to register.</a><br><br>
+                <div class="err_message">
+                    {% for msg in messages %}
+                    {{ msg }}
+                    {% endfor %}
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
